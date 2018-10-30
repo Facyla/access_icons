@@ -3,14 +3,14 @@
 	<name>Access level icons</name>
 	<id>access_icons</id>
 	<author>Florian DANIEL aka Facyla</author>
-	<version>2.3.0</version>
+	<version>3.0.0</version>
 	<blurb>Access icons</blurb>
 	<description>Enable this plugin if you wish to add icons representing access levels to entities (content and groups), and provide an explanation page.</description>
-	<website>http://lereseausocial.fr/</website>
+	<website>https://facyla.fr/</website>
 	<license>GNU Public License version 2</license>
 	<requires>
 		<type>elgg_release</type>
-		<version>2.3</version>
+		<version>3.0</version>
 	</requires>
 
 	<activate_on_install>false</activate_on_install>
