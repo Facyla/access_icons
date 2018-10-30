@@ -1,8 +1,9 @@
 <?php
-global $CONFIG;
-$iconurl = $CONFIG->url . 'mod/access_icons/graphics/';
-$french = array (
-	
+$url = elgg_get_site_url();
+$iconurl = $url . 'mod/access_icons/graphics/';
+
+return array(
+	'access_icons' => "Icônes d'accès",
 	'access_icons:title' => "Informations sur les droits d'accès.",
 	
 	// Settings
@@ -11,7 +12,7 @@ $french = array (
 	'access_icons:settings:helptext' => "Texte de la page d'aide sur les accès",
 	'access_icons:settings:helptext:help' => "Plutôt qu'un lien vers une page, vous pouvez configurer ici directement le texte qui apparaîtra pour expliquer les divers types d'accès disponibles pour ce site. Les informations saisies ici seront affichées dans une \"lightbox\" (boîte affichée dans la page). Vous pouvez utiliser tout type de formatage HTML. Laissez le champ vide pour ne rien afficher du tout (pas de lien), ou écrivez \"RAZ\" pour charger les valeurs par défaut.",
 	
-	'access_icons:settings:helptext:details' => "Pour créer votre page d'explications, il est recommandé d'utilisé le plugin cmpspages, qui vous permet de créer une page qui peut être affichée sans l'interface du site, en ajoutant ?embed=true. <strong><a href=\"" . $CONFIG->url . "cmspages/?pagetype=help-access\" target=\"_new\">Cliquez ici pour créer cette page</a></strong>, puis utilisez <strong>" . $CONFIG->url . "cmspages/read/<i>help-access</i>?embed=true</strong> dans le champ ci-dessus.<br />Note : vous pouvez remplacer <i>help-access</i> par l'élément d'URL de votre choix.<br /><br /><strong>Voici ci-dessous un exemple de texte à copier-coller dans cette page, libre à vous de l'adapter à votre convenance&nbsp;:</strong>",
+	'access_icons:settings:helptext:details' => "Pour créer votre page d'explications, il est recommandé d'utilisé le plugin cmpspages, qui vous permet de créer une page qui peut être affichée sans l'interface du site, en ajoutant ?embed=true. <strong><a href=\"" . $url . "cmspages/?pagetype=help-access\" target=\"_new\">Cliquez ici pour créer cette page</a></strong>, puis utilisez <strong>" . $url . "cmspages/read/<i>help-access</i>?embed=true</strong> dans le champ ci-dessus.<br />Note : vous pouvez remplacer <i>help-access</i> par l'élément d'URL de votre choix.<br /><br /><strong>Voici ci-dessous un exemple de texte à copier-coller dans cette page, libre à vous de l'adapter à votre convenance&nbsp;:</strong>",
 	
 	'access_icons:settings:helptext:default' => "<p>Il est essentiel de d&eacute;finir correctement les droits d'acc&egrave;s lorsque vous faites de nouvelles publications, afin de garantir que les informations que vous publi&eacute;es sont partag&eacute;es avec les bonnes personnes.</p>
 <p>Seules les personnes avec lesquelles vous partagez vos publications y auront acc&egrave;s. Les autres ne sauront pas que vous avez publi&eacute; quelque chose.</p>
@@ -62,25 +63,28 @@ $french = array (
 	'access_icons:default:details' => "Les droits d'accès par défaut du site (ou de votre compte utilisateur le cas échéant) s'appliquent à ce contenu.",
 	
 	// Private access level (0)
-	'access_icons:private:details' => "Cette publication est PRIVÉE : elle n'est accessible par son auteur, ou par un administrateur (du site ou du groupe dans lequel elle est publiée).",
+	'access_icons:private:details' => "PRIVÉE : elle n'est accessible par son auteur, ou par un administrateur (du site ou du groupe dans lequel elle est publiée).",
 	
 	// Members access level (1)
-	'access_icons:members:details' => "Cette publication est RÉSERVÉE AUX MEMBRES DU SITE : c'est-à-dire que tous les membres du site peuvent y accéder (ils doivent pour cela être connectés).",
+	'access_icons:members:details' => "RÉSERVÉ AUX MEMBRES DU SITE : c'est-à-dire que tous les membres du site peuvent y accéder (ils doivent pour cela être connectés).",
 	
 	// Public access level (2)
-	'access_icons:public:details' => "Cette publication est PUBLIQUE : toute personne disposant du lien vers cette page peut y accéder sans avoir besoin de s'identifier sur le site (elle peut donc être indexée par les moteurs de recherche).",
+	'access_icons:public:details' => "PUBLIQUE : toute personne disposant du lien vers cette page peut y accéder sans avoir besoin de s'identifier sur le site (elle peut donc être indexée par les moteurs de recherche).",
 	
 	// Friends access level (-2)
-	'access_icons:friends:details' => "Cette publication est RÉSERVÉE AUX CONTACS DE L'AUTEUR : seuls les contacts de l'auteur peuvent y accéder.",
+	'access_icons:friends:details' => "RÉSERVÉ AUX CONTACS DE L'AUTEUR : seuls les contacts de l'auteur peuvent y accéder.",
 	
 	// Group access level (>2, owned by a group)
-	'access_icons:group:details' => "Cette publication est RÉSERVÉE AUX MEMBRES DU GROUPE : seuls les membres de ce groupe peuvent y accéder.",
+	'access_icons:group:details' => "RÉSERVÉ AUX MEMBRES DU GROUPE : seuls les membres de ce groupe peuvent y accéder.",
+	
+	// Site access level (>2, owned by a site)
+	'access_icons:site:details' => "RÉSERVÉ À UNE LISTE D'ACCÈS SPÉCIALE : seuls les membres de cette liste d'accès spéciale peuvent y accéder.",
 	
 	// Collection access level (>2, owned by a user)
-	'access_icons:collection:details' => "Cette publication est RÉSERVÉE A UNE LISTE : seuls les membres d'une liste de contacts de l'auteur peuvent y accéder.",
+	'access_icons:collection:details' => "RÉSERVÉ A UNE LISTE : seuls les membres d'une liste de contacts de l'auteur peuvent y accéder.",
 	
 	// Other / unkwnown access level (>2, owned none or other entity)
-	'access_icons:other:details' => "Cette publication est RÉSERVÉE A CERTAINS MEMBRES : seuls certains membres et/ou types de membres peuvent y accéder.",
+	'access_icons:other:details' => "RÉSERVÉ A CERTAINS MEMBRES : seuls certains membres et/ou types de membres peuvent y accéder.",
 	
 	// Access levels
 	'access:-2' => 'Contacts',
@@ -90,6 +94,4 @@ $french = array (
 	'access:2' => 'Public',
 	
 );
-
-add_translation("fr",$french);
 

@@ -1,8 +1,9 @@
 <?php
-global $CONFIG;
-$iconurl = $CONFIG->url . 'mod/access_icons/graphics/';
-$english = array (
-	
+$url = elgg_get_site_url();
+$iconurl = $url . 'mod/access_icons/graphics/';
+
+return array(
+	'access_icons' => "Access rights icons",
 	'access_icons:title' => "Access rights information details.",
 	
 	// Settings
@@ -11,7 +12,7 @@ $english = array (
 	'access_icons:settings:helptext' => "Access rights help page content",
 	'access_icons:settings:helptext:help' => "Instead of a link to a page, you can set here the text that will be displayed to explain the various available access levels for this site. This text will be displayed in a \"lightbox\" (popup box into the page). You can use any HTML formatting. Leave this field empty if you don't want to display any link, or \"RAZ\" to reload default values.",
 	
-	'access_icons:settings:helptext:details' => "An easy way to create your explanation page is to use cmspages plugin, which lets you create a page that can be displayed without any interface, by adding ?embed=true. <strong><a href=\"" . $CONFIG->url . "cmspages/?pagetype=help-access\" target=\"_new\">Click here to create that page</a></strong>, then use <strong>" . $CONFIG->url . "cmspages/read/<i>help-access</i>?embed=true</strong> in the above field.<br />Note : you can replace <i>help-access</i> by any custom text in this URL.<br /><br /><strong>Here is a template of an access levels details page that you can copy/paste and adapt to your site needs&nbsp;:</strong>",
+	'access_icons:settings:helptext:details' => "An easy way to create your explanation page is to use cmspages plugin, which lets you create a page that can be displayed without any interface, by adding ?embed=true. <strong><a href=\"" . $url . "cmspages/?pagetype=help-access\" target=\"_new\">Click here to create that page</a></strong>, then use <strong>" . $url . "p/<i>help-access</i>?embed=true</strong> in the above field.<br />Note : you can replace <i>help-access</i> by any custom text in this URL.<br /><br /><strong>Here is a template of an access levels details page that you can copy/paste and adapt to your site needs&nbsp;:</strong>",
 	
 	'access_icons:settings:helptext:default' => "<p>It is essential to define correct access levels when you are publishing new content, so you can garantee that the information you publish are shared whith the correct people.</p>
 <p>Only people who have access to your publications will be able to read them. People who don't have access will not even know these publications exist.</p>
@@ -26,15 +27,15 @@ $english = array (
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-public\">Public</span></td>
-<td>&nbsp;Any public content is <strong>viewable by anyone</strong>. This includes any site visitor, even non-members and not logged in people : there is no need to have an account or to log in the site to have access to it. A public content is also readable and potentially indexed by search engines.</td>
+<td>&nbsp;Any public content can be <strong>read by anyone</strong>. This includes any site visitor, even non-members and not logged in people : there is no need to have an account or to log in the site to have access to it. A public content is also readable and potentially indexed by search engines.</td>
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-members\">Site members</span></td>
-<td>&nbsp;This publication is viewable by <strong>all and any site members</strong>, which means any person who has an account on this site. Search engines do not have access.</td>
+<td>&nbsp;This publication can be read by <strong>all and any site members</strong>, which means any person who has an account on this site. Search engines do not have access.</td>
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-group\">Group</span></td>
-<td>&nbsp;This publication is viewable only by the members of a <strong>particular group</strong>.</td>
+<td>&nbsp;This publication can be read only by the members of a <strong>particular group</strong>.</td>
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-collection\">Liste de contacts</span></td>
@@ -42,11 +43,11 @@ $english = array (
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-friends\">Friends</span></td>
-<td>&nbsp;This publication is viewable only by the <strong>friends of the author</strong>.</td>
+<td>&nbsp;This publication can be read only by the <strong>friends of the author</strong>.</td>
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-private\">Private / draft</span></td>
-<td>&nbsp;This publication is viewable <strong>only by you</strong>.</td>
+<td>&nbsp;This publication can be read <strong>only by you</strong>.</td>
 </tr>
 <tr>
 <td><span class=\"elgg-access elgg-access-public elgg-access-limited\">Limited</span></td>
@@ -62,25 +63,28 @@ $english = array (
 	'access_icons:default:details' => "Default site access level (or default user access level) apply to this content.",
 	
 	// Private access level (0)
-	'access_icons:private:details' => "This publication is PRIVATE : it is accessible only by its owner (author), or by an administrator (of the site ou of the group it's published in).",
+	'access_icons:private:details' => "PRIVATE : it is accessible only by its owner (author), or by an administrator (of the site ou of the group it's published in).",
 	
 	// Members access level (1)
-	'access_icons:members:details' => "This publication is RESTRICTED TO SITE MEMBERS : any site member can access it (they need to be logged i).",
+	'access_icons:members:details' => "RESTRICTED TO SITE MEMBERS : any site member can access it (they need to be logged i).",
 	
 	// Public access level (2)
-	'access_icons:public:details' => "This publication is PUBLIC : any person who knows this publication URL can read it whithout being logged in (it can also be indexed by search engines).",
+	'access_icons:public:details' => "PUBLIC : any person who knows this publication URL can read it whithout being logged in (it can also be indexed by search engines).",
 	
 	// Friends access level (-2)
-	'access_icons:friends:details' => "This publication is RESTRICTED TO OWNER'S FRIENDS : only the owner's (author) friends can access it.",
+	'access_icons:friends:details' => "RESTRICTED TO OWNER'S FRIENDS : only the owner's (author) friends can access it.",
 	
 	// Group access level (>2, owned by a group)
-	'access_icons:group:details' => "This publication is RESTRICTED TO GROUP MEMBERS : only the members of the group can read it.",
+	'access_icons:group:details' => "RESTRICTED TO GROUP MEMBERS : only the members of the group can read it.",
+	
+	// Site access level (>2, owned by a site)
+	'access_icons:site:details' => "RESTRICTED TO A SPECIAL ACCESS LIST : only the members of that custom access list can read it.",
 	
 	// Collection access level (>2, owned by a user)
-	'access_icons:collection:details' => "This publication is RESTRICTED TO A CUSTOM ACCESS LIST : only the members of a custom access list of the owner can access it.",
+	'access_icons:collection:details' => "RESTRICTED TO A CUSTOM ACCESS LIST : only the members of a custom access list of the owner can access it.",
 	
 	// Other / unkwnown access level (>2, owned none or other entity)
-	'access_icons:other:details' => "This publication is RESTRICTED TO SOME MEMBERS : only some members and/or some types of members can access it.",
+	'access_icons:other:details' => "RESTRICTED TO SOME MEMBERS : only some members and/or some types of members can access it.",
 	
 	// Access levels
 	'access:-2' => 'Friends',
@@ -90,6 +94,4 @@ $english = array (
 	'access:2' => 'Public',
 	
 );
-
-add_translation("en",$english);
 
